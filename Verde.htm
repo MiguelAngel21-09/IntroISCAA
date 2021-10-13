@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><link rel="stylesheet" type="text/css" href="css3clock.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #33CCCC;
+}
+.style1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+.style2 {font-family: Arial, Helvetica, sans-serif; font-size: 36px; }
+-->
+</style></head>
+
+<body>
+<div id="Layer1" style="position:absolute; left:367px; top:-27px; width:832px; height:230px; z-index:1; visibility: inherit;">
+  <div align="center">
+    <p>&nbsp;</p>
+    <p class="style1">&nbsp;</p>
+    <p class="style2"><h2>
+<script language="JavaScript1.2">
+
+/*
+Neon Lights Text
+By JavaScript Kit (http://javascriptkit.com)
+Over 400+ free scripts here!
+*/
+
+var message="Welcome to JavaScript Kit!"
+var neonbasecolor="gray"
+var neontextcolor="yellow"
+var flashspeed=100  //in milliseconds
+
+///No need to edit below this line/////
+
+var n=0
+if (document.all||document.getElementById){
+document.write('')
+for (m=0;m<message.length;m++)
+document.write('<span id="neonlight'+m+'">'+message.charAt(m)+'</span>')
+document.write('')
+}
+else
+document.write(message)
+
+function crossref(number){
+var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
+return crossobj
+}
+
+function neon(){
+
+//Change all letters to base color
+if (n==0){
+for (m=0;m<message.length;m++)
+//eval("document.all.neonlight"+m).style.color=neonbasecolor
+crossref(m).style.color=neonbasecolor
+}
+
+//cycle through and change individual letters to neon color
+crossref(n).style.color=neontextcolor
+
+if (n<message.length-1)
+n++
+else{
+n=0
+clearInterval(flashing)
+setTimeout("beginneon()",1500)
+return
+}
+}
+
+function beginneon(){
+if (document.all||document.getElementById)
+flashing=setInterval("neon()",flashspeed)
+}
+beginneon()
+
+
+</script>
+</h2>
+
+<p align="center">This free script provided by<br />
+<a href="http://javascriptkit.com">JavaScript Kit</a></p>&nbsp;</p>
+  </div>
+</div>
+<div id="Layer2" style="position:absolute; left:18px; top:12px; width:224px; height:96px; z-index:2"><img src="descarga.gif" width="218" height="192"></div>
+<div id="Layer3" style="position:absolute; left:1682px; top:1px; width:306px; height:187px; z-index:3">
+  <div id="liveclock" class="outer_face">
+
+<div class="marker oneseven"></div>
+<div class="marker twoeight"></div>
+<div class="marker fourten"></div>
+<div class="marker fiveeleven"></div>
+
+<div class="inner_face">
+<div class="hand hour"></div>
+<div class="hand minute"></div>
+<div class="hand second"></div>
+</div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+/***********************************************
+* CSS3 Analog Clock- by JavaScript Kit (www.javascriptkit.com)
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+var $hands = $('#liveclock div.hand')
+
+window.requestAnimationFrame = window.requestAnimationFrame
+                               || window.mozRequestAnimationFrame
+                               || window.webkitRequestAnimationFrame
+                               || window.msRequestAnimationFrame
+                               || function(f){setTimeout(f, 60)}
+
+
+function updateclock(){
+	var curdate = new Date()
+	var hour_as_degree = ( curdate.getHours() + curdate.getMinutes()/60 ) / 12 * 360
+	var minute_as_degree = curdate.getMinutes() / 60 * 360
+	var second_as_degree = ( curdate.getSeconds() + curdate.getMilliseconds()/1000 ) /60 * 360
+	$hands.filter('.hour').css({transform: 'rotate(' + hour_as_degree + 'deg)' })
+	$hands.filter('.minute').css({transform: 'rotate(' + minute_as_degree + 'deg)' })
+	$hands.filter('.second').css({transform: 'rotate(' + second_as_degree + 'deg)' })
+	requestAnimationFrame(updateclock)
+}
+
+requestAnimationFrame(updateclock)
+
+
+</script></div>
+</body>
+</html>
